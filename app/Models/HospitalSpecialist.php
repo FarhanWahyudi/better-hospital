@@ -20,7 +20,7 @@ class HospitalSpecialist extends Model
         return $this->belongsTo(Hospital::class);
     }
 
-    public function doctor(): BelongsTo
+    public function Specialitst(): BelongsTo
     {
         return $this->belongsTo(Specialist::class);
     }
