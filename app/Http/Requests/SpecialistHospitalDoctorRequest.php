@@ -11,7 +11,7 @@ class SpecialistHospitalDoctorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,8 +22,8 @@ class SpecialistHospitalDoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hospital_id' => 'required|integer|exists:hospital,id',
-            'specialist_id' => 'required|integer|exists:specialist,id',
+            'hospital_id' => 'required|integer|exists:hospitals,id',
+            'specialist_id' => 'required|integer|exists:specialists,id',
         ];
     }
 }

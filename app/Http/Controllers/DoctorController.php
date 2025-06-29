@@ -47,7 +47,7 @@ class DoctorController extends Controller
     {
         try {
             $doctor = $this->doctorService->update($id, $request->validated());
-            return response()->json(new DoctorRequest($doctor));
+            return response()->json(new DoctorResource($doctor));
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Doctor not found'
@@ -55,7 +55,7 @@ class DoctorController extends Controller
         }
     }
 
-    public function destory(int $id)
+    public function destroy(int $id)
     {
         try {
             $this->doctorService->delete($id);

@@ -25,7 +25,7 @@ class DoctorRequest extends FormRequest
 
         return [
             'name' => 'required|string|unique:doctors,name,' . $id,
-            'photo' => $this->isMethod('post') ? 'required|image|max:2048' : 'sometimes|image|2048',
+            'photo' => $this->isMethod('post') ? 'required|image|max:2048' : 'sometimes|image|max:2048',
             'about' => 'required|string',
             'yoe' => 'required|integer|min:0',
             'specialist_id' => 'required|exists:specialists,id',

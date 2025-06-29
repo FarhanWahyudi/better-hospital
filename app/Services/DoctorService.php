@@ -135,5 +135,7 @@ class DoctorService
                 }
             }
         }
+        
+        return $availability;
     }
 }
