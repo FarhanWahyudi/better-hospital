@@ -19,12 +19,12 @@ class Specialist extends Model
         'price',
     ];
 
-    protected function doctors(): HasMany
+    public function doctors(): HasMany
     {
         return $this->hasMany(Doctor::class);
     }
 
-    protected function hospitals(): BelongsToMany
+    public function hospitals(): BelongsToMany
     {
         return $this->belongsToMany(Hospital::class, 'hospital_specialists');
     }

@@ -20,7 +20,7 @@ class SpecialistController extends Controller
     {
         $fields = ['id', 'name', 'photo', 'price'];
         $specialists = $this->specialistService->getAll($fields);
-        return response()->json(SpecialistResource::colection($specialists));
+        return response()->json(SpecialistResource::collection($specialists));
     }
 
     public function show(int $id)
@@ -28,7 +28,7 @@ class SpecialistController extends Controller
         try {
             $fields = ['*'];
             $specialist = $this->specialistService->getById($id, $fields);
-            return response()->json(new SpecialistService($specialist));
+            return response()->json(new SpecialistResource($specialist));
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => 'Specialist not found'
