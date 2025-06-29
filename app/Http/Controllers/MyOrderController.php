@@ -8,6 +8,7 @@ use App\Models\BookingTransaction;
 use App\Services\BookingTransactionService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MyOrderController extends Controller
 {
@@ -19,14 +20,19 @@ class MyOrderController extends Controller
 
     public function index()
     {
-        $orders = $this->bookingTransactionService->getAllForUser(auth()->id);
+        $user = Auth::user();
+        $userId = $user->id;
+        $orders = $this->bookingTransactionService->getAllForUser($userId);
         return response()->json(TransactionResource::collection($orders));
     }
 
     public function show(int $id)
     {
+        $user = Auth::user();
+        $userId = $user->id;
+
         try {
-            $order = $this->bookingTransactionService->getById($id, auth()->id);
+            $order = $this->bookingTransactionService->getById($id, $userId);
             return response()->json(new TransactionResource($order));
         } catch (ModelNotFoundException $e) {
             return response()->json([

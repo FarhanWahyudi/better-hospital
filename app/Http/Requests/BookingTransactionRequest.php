@@ -39,7 +39,7 @@ class BookingTransactionRequest extends FormRequest
                 }
             ],
             'time_at' => [
-                'requird',
+                'required',
                 'date_format:H:i',
                 Rule::in(['10:30', '11:30', '13:30', '14:30', '15:30', '16:30'])
             ],
