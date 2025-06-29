@@ -53,7 +53,7 @@ class HospitalController extends Controller
         }
     }
 
-    public function destory(int $id)
+    public function destroy(int $id)
     {
         try {
             $this->hospitalService->delete($id);
