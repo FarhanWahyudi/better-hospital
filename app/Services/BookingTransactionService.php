@@ -46,9 +46,9 @@ class BookingTransactionService
 
     // customer service
 
-    public function getAllForUser()
+    public function getAllForUser(int $userId)
     {
-        return $this->bookingTransactionRepository->getAll();
+        return $this->bookingTransactionRepository->getAll($userId);
     }
 
     public function getById(int $id, int $userId)
