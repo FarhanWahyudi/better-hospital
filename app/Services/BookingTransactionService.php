@@ -48,7 +48,7 @@ class BookingTransactionService
 
     public function getAllForUser(int $userId)
     {
-        return $this->bookingTransactionRepository->getAll($userId);
+        return $this->bookingTransactionRepository->getAllForUser($userId);
     }
 
     public function getById(int $id, int $userId)
@@ -82,7 +82,7 @@ class BookingTransactionService
             $data['proof'] = $this->uploadProof($data['proof']);
         }
 
-        // return $this->bookingTransactionRepository->create($data);
+        return $this->bookingTransactionRepository->create($data);
     }
 
     private function uploadProof(UploadedFile $file)

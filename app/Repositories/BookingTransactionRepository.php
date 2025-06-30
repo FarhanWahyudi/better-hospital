@@ -9,14 +9,14 @@ class BookingTransactionRepository
     // manager query
     public function getAll()
     {
-        return BookingTransaction::with(['doctor', 'doctor:hospital', 'doctor:specialist', 'user'])
+        return BookingTransaction::with(['doctor', 'doctor.hospital', 'doctor.specialist', 'user'])
             ->latest()
             ->paginate(10);
     }
 
     public function getByIdForManager(int $id)
     {
-        return BookingTransaction::with(['doctor', 'doctor:hospital', 'doctor:specialist', 'user'])
+        return BookingTransaction::with(['doctor', 'doctor.hospital', 'doctor.specialist', 'user'])
             ->findOrFail($id);
     }
 
@@ -31,7 +31,7 @@ class BookingTransactionRepository
     public function getAllForUser(int $userId)
     {
         return BookingTransaction::where('user_id', $userId)
-            ->with(['doctor', 'doctor:hospital', 'doctor:specialist'])
+            ->with(['doctor', 'doctor.hospital', 'doctor.specialist'])
             ->latest()
             ->paginate(10);
     }
@@ -40,7 +40,7 @@ class BookingTransactionRepository
     {
         return BookingTransaction::where('id', $id)
             ->where('user_id', $userId)
-            ->with(['doctor', 'doctor:hospital', 'doctor:specialist'])
+            ->with(['doctor', 'doctor.hospital', 'doctor.specialist'])
             ->firstOrFail($id);
     }
 
